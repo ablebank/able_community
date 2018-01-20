@@ -22,11 +22,13 @@ for link in links:
             if a['href'].find('event') > 0:
                 html_detail = urlopen(defaultURL + a['href'])
                 bsObj_detail = BeautifulSoup(html_detail, "html.parser")
-                coin = bsObj_detail.find('span', attrs={'class': 'title'}).get_text(strip=True).split(':')[0]
+                #print(bsObj_detail.find('title').get_text(strip=True).split(':')[0])
+                coin = bsObj_detail.find('title').get_text(strip=True).split(':')[0]
                 title = bsObj_detail.find('span', attrs={'class': 'title'}).get_text(strip=True).split(':')[1]
                 date = bsObj_detail.find('span', attrs={'class':'start'}).get_text(strip=True)[0:10]
                 proof = bsObj_detail.find('div', attrs={'class':'source'}).find('a', href=True)['href']
                 events.append([coin, title, date, proof])
+                print(bsObj_detail)
 
 
 file = open("coindar_crawl_result.txt", "w", encoding='utf-8')
