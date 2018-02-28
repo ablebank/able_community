@@ -65,6 +65,7 @@ for link in links:
                 type = event_type(bsObj_detail.find('div', attrs={'class':'type'}).get_text(strip=True))
                 date = bsObj_detail.find('span', attrs={'class':'start'}).get_text(strip=True)[0:10]
                 proof = bsObj_detail.find('div', attrs={'class':'source'}).find('a', href=True)['href']
+
                 events.append([coin, title, type, date, proof])
 
 
